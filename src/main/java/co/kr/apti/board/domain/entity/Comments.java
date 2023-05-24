@@ -29,4 +29,7 @@ public class Comments extends BaseEntity {
     @Column(updatable = false)
     @ColumnDefault("0")
     private Long dislikeCount;
+
+    // Board랑 연관 맵핑 설정 필요.
+
 }
