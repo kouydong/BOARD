@@ -1,6 +1,6 @@
 package co.kr.apti.board.domain.service;
 
-import co.kr.apti.board.domain.controller.res.BoardDto;
+import co.kr.apti.board.domain.controller.dto.BoardDto;
 import co.kr.apti.board.domain.entity.Board;
 import co.kr.apti.board.domain.repository.BoardRepo;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.data.domain.Sort.Direction.ASC;
 
 @Service
 @RequiredArgsConstructor
@@ -34,7 +36,7 @@ public class BoardService {
 
         List<BoardDto> boardDtoList = new ArrayList<>();
 
-        List<Board> boardList = boardRepo.findAll(Sort.by(Sort.Direction.ASC,"boardId"));
+        List<Board> boardList = boardRepo.findAll(Sort.by(ASC,"boardId"));
 
         for(Board board : boardList) {
             BoardDto boardDto = BoardDto.builder()
@@ -65,30 +67,4 @@ public class BoardService {
         boardRepo.deleteById(boardId);
     }
 
-
-
-
-
-
-
-
-
-//    @Transactional
-//    public List<BoardDto> getBoardList() {
-//        List<Board> boardList = boardRepo.findAll();
-//        List<BoardDto> boardDtoList = new ArrayList<>();
-//
-////
-////        for(Board board : boardList) {
-////            BoardDto boardDto = BoardDto.builder()
-////                    .id(board.getId())
-////                    .author(board.getAuthor())
-////                    .title(board.getTitle())
-////                    .content(board.getContent())
-////                    .createdDate(board.getCreatedDate())
-////                    .build();
-////            boardDtoList.add(boardDto);
-//        }
-////        return boardDtoList;
-//    }
 }

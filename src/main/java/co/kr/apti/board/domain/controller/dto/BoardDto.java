@@ -1,4 +1,4 @@
-package co.kr.apti.board.domain.controller.res;
+package co.kr.apti.board.domain.controller.dto;
 
 
 import co.kr.apti.board.domain.entity.Board;

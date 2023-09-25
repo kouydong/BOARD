@@ -1,6 +1,6 @@
 package co.kr.apti.board.domain.controller;
 
-import co.kr.apti.board.domain.controller.res.BoardDto;
+import co.kr.apti.board.domain.controller.dto.BoardDto;
 import co.kr.apti.board.domain.entity.Board;
 import co.kr.apti.board.domain.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-
 public class BoardController {
 
     private final BoardService boardService;
@@ -60,6 +59,11 @@ public class BoardController {
     public String delete(@RequestParam("boardId") Long boardId) {
         boardService.deleteByBoardId(boardId);
         return "redirect:/";
+    }
+
+    @RequestMapping("/test")
+    public String test() {
+        return "board/boardList.html";
     }
 
 }
